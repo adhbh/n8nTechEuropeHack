@@ -496,28 +496,35 @@ function addButtonStyles() {
   style.id = 'virtual-tryon-styles';
   style.textContent = `
     .virtual-tryon-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      z-index: 1001;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      color: white !important;
+      border: none !important;
+      padding: 8px 12px !important;
+      border-radius: 20px !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+      transition: all 0.3s ease !important;
+      white-space: nowrap !important;
+      z-index: 1001 !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      line-height: 1 !important;
+      text-decoration: none !important;
+      display: inline-block !important;
+      position: relative !important;
     }
     
     .virtual-tryon-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
     }
     
     .virtual-tryon-wrapper {
-      pointer-events: auto;
+      pointer-events: auto !important;
+      position: absolute !important;
+      z-index: 1000 !important;
     }
   `;
   

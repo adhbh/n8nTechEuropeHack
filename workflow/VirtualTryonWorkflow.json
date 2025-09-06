@@ -1,0 +1,165 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1072,
+        1216
+      ],
+      "id": "b853a0fa-997f-41f1-b75b-0b0162e0391c",
+      "name": "Your Use-Case? ❤️"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "743abfa1-9a3d-4830-a202-26297efa8d47",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        1056,
+        416
+      ],
+      "id": "6c248b67-d845-41a7-b721-a3aeb3eb5a77",
+      "name": "Webhook",
+      "webhookId": "743abfa1-9a3d-4830-a202-26297efa8d47"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "00f60ae9-7fce-417c-b983-3126bc9412d0",
+              "name": "body.userImageBase64",
+              "value": "={{ $json.body.userImageBase64 }}",
+              "type": "string"
+            },
+            {
+              "id": "afcd4684-8e5e-45ce-838d-d56b8a087c5b",
+              "name": "body.productImageBase64",
+              "value": "={{ $json.body.productImageBase64 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1056,
+        576
+      ],
+      "id": "d46e5df8-5d04-4df7-801d-5bc8ade0c430",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\n  {\n  \"contents\": [\n    {\n      \"parts\": [\n        {\n          \"text\": \"Generate a low-resolution 200x200 image of the userImage. Replace all clothing items, including top, bottom, shoes, and accessories, with the outfit from productImage. The colthing should be exactly the same as product image. Ensure the replacement is applied to the entire outfit, not just one part.\"\n        },\n        {\n          \"inlineData\": {\n            \"mimeType\": \"image/jpeg\",\n            \"data\": $json.body.userImageBase64\n          }\n        },\n        {\n          \"inlineData\": {\n            \"mimeType\": \"image/jpeg\",\n            \"data\": $json.body.productImageBase64\n          }\n        }\n      ]\n    }\n  ]\n}\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1072,
+        800
+      ],
+      "id": "3b707870-fc5b-48dc-bc0f-f8610b0c374f",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpCustomAuth": {
+          "id": "TmPEYIW4nl3M9PY1",
+          "name": "BlackForestKey"
+        },
+        "httpHeaderAuth": {
+          "id": "d6ASMEIga2hHWcif",
+          "name": "GeminiKey"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": \"{{$json.candidates[0].content.parts[0].inlineData.data}}\",\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1072,
+        992
+      ],
+      "id": "5e785bff-2a40-4799-a2c2-0b00aa1c2422",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Your Use-Case? ❤️",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "586923fb-6c72-4c33-8511-0578c6b4905b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0de09ef87a242d628ae302e5ff7027ea24a6c1cc37640da53c5d17c2bfbd8d5d"
+  },
+  "id": "Sa7Qv5PSF95lWQtE",
+  "tags": []
+}

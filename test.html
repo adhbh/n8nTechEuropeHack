@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Try-On Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        .product-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .site-simulation {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .site-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛍️ Virtual Try-On Extension Test Page</h1>
+        <p>This page simulates various e-commerce sites to test the Virtual Try-On extension.</p>
+        <p><strong>Instructions:</strong> Load the extension in Chrome and visit this page to see the "👕 Virtual Try" buttons appear.</p>
+    </div>
+
+    <!-- Zalando-style simulation -->
+    <div class="site-simulation">
+        <div class="site-title">🇩🇪 Zalando Style Products</div>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop" 
+                     alt="Blue Denim Jacket" 
+                     class="product-image"
+                     data-testid="product-image">
+                <div class="product-title">Classic Blue Denim Jacket</div>
+                <div class="product-price">€79.99</div>
+                <div class="product-description">A timeless denim jacket perfect for casual wear. Made from premium cotton denim.</div>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop" 
+                     alt="Black Leather Jacket" 
+                     class="product-image"
+                     data-testid="product-image">
+                <div class="product-title">Premium Black Leather Jacket</div>
+                <div class="product-price">€199.99</div>
+                <div class="product-description">Genuine leather jacket with modern cut. Perfect for evening wear.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Amazon-style simulation -->
+    <div class="site-simulation">
+        <div class="site-title">📦 Amazon Style Products</div>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&h=400&fit=crop" 
+                     alt="White Cotton T-Shirt" 
+                     class="a-dynamic-image"
+                     id="landingImage">
+                <div class="product-title">Essential White Cotton T-Shirt</div>
+                <div class="product-price">$24.99</div>
+                <div class="product-description">100% organic cotton t-shirt. Comfortable fit for everyday wear.</div>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop" 
+                     alt="Red Hoodie" 
+                     class="a-dynamic-image">
+                <div class="product-title">Cozy Red Hoodie</div>
+                <div class="product-price">$49.99</div>
+                <div class="product-description">Warm and comfortable hoodie with kangaroo pocket. Perfect for cold days.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- H&M-style simulation -->
+    <div class="site-simulation">
+        <div class="site-title">👗 H&M Style Products</div>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop" 
+                     alt="Floral Summer Dress" 
+                     class="product-detail-main-image">
+                <div class="product-title">Floral Summer Dress</div>
+                <div class="product-price">€39.99</div>
+                <div class="product-description">Light and airy summer dress with beautiful floral pattern.</div>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=400&fit=crop" 
+                     alt="Striped Sweater" 
+                     class="product-image">
+                <div class="product-title">Classic Striped Sweater</div>
+                <div class="product-price">€29.99</div>
+                <div class="product-description">Comfortable knit sweater with timeless stripe pattern.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generic products -->
+    <div class="site-simulation">
+        <div class="site-title">🛒 Generic E-commerce Products</div>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop" 
+                     alt="Blue Jeans" 
+                     class="product-image">
+                <div class="product-title">Classic Blue Jeans</div>
+                <div class="product-price">$69.99</div>
+                <div class="product-description">Premium denim jeans with perfect fit and comfort.</div>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&h=400&fit=crop" 
+                     alt="Green Polo Shirt" 
+                     class="product-image">
+                <div class="product-title">Green Polo Shirt</div>
+                <div class="product-price">$34.99</div>
+                <div class="product-description">Classic polo shirt in fresh green color. Perfect for casual occasions.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 20px; background: white; border-radius: 12px;">
+        <h3>🔧 Testing Instructions</h3>
+        <ol style="text-align: left; max-width: 600px; margin: 0 auto;">
+            <li>Load the Virtual Try-On extension in Chrome (Developer mode)</li>
+            <li>Refresh this page</li>
+            <li>Look for "👕 Virtual Try" buttons appearing on product images</li>
+            <li>Click a button to test the popup functionality</li>
+            <li>Upload a photo and test the virtual try-on process</li>
+        </ol>
+        <p style="margin-top: 20px; color: #666; font-size: 14px;">
+            Note: Make sure to configure your n8n webhook URL in config.js before testing the full workflow.
+        </p>
+    </div>
+</body>
+</html>
